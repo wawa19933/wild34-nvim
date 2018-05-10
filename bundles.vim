@@ -18,7 +18,66 @@
 
 " Plugins {
 
+    " General { 
+        if count(g:spf13_bundle_groups, 'general')
+            if !executable('fzf')
+                Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+            endif
+            Plug 'junegunn/fzf.vim'
+            Plug 'tpope/vim-fugitive'           " incredible Git integration
+            Plug 'Shougo/context_filetype.vim'
+            Plug 'Shougo/neoyank.vim'
+            " UI enhancement
+            Plug 'arcticicestudio/nord-vim'     " default colorscheme
+            Plug 'vim-airline/vim-airline'      " nice statusline
+            Plug 'airblade/vim-gitgutter'       " git diff marks
+            Plug 'mhinz/vim-startify'           " start page
+            Plug 'junegunn/goyo.vim'            " distraction-free mode
+            Plug 'amix/vim-zenroom2'            " enhancement to Goyo
+            Plug 'junegunn/vim-peekaboo'        " registers preview on copy/paste
+        endif
+    " }
 
+    " Syntax plugins {
+        if count(g:spf13_bundle_groups, 'syntax')
+            Plug 'sheerun/vim-polyglot'
+            Plug 'pboettch/vim-cmake-syntax'
+            Plug 'plasticboy/vim-markdown'
+            Plug 'NLKNguyen/c-syntax.vim'
+            Plug 'elzr/vim-json'
+            Plug 'neovimhaskell/haskell-vim'
+            Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
+        endif
+    " }
+
+    " Themes { 
+        if count(g:spf13_bundle_groups, 'themes')
+            " Plug 'rafi/awesome-vim-colorschemes'
+            Plug 'jacoborus/tender.vim'
+            Plug 'blueshirts/darcula'
+            Plug 'connorholyday/vim-snazzy'
+            Plug 'vim-scripts/PaperColor.vim'
+            Plug 'morhetz/gruvbox'
+            Plug 'mkarmona/colorsbox'
+            Plug 'junegunn/seoul256.vim'
+            Plug 'kristijanhusak/vim-hybrid-material'
+        endif
+    " }
+
+    " Misc {
+        if count(g:spf13_bundle_groups, 'misc')
+            Plug 'burnettk/vim-jenkins'
+            Plug 'andrewradev/splitjoin.vim'
+            Plug 'dbakker/vim-projectroot'
+            Plug 'junegunn/vim-journal'
+            Plug 'junegunn/vim-easy-align'
+            Plug 'derekwyatt/vim-fswitch'
+            Plug 'pbogut/fzf-mru.vim'
+            Plug 'dominickng/fzf-session.vim'
+            Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+            Plug 'justinhoward/fzf-neoyank'
+        endif
+    " }
 
 " }
 

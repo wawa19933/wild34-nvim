@@ -150,21 +150,19 @@
 
 " Vim UI {
 
-    if filereadable(expand("~/.local/share/nvim/plugged/nord-vim/colors/nord.vim"))
+    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+    if count(keys(g:plugs), 'nord-vim')
         let g:nord_italic = 1
         let g:nord_italic_comments = 1
         let g:nord_comment_brightness = 10
         let g:nord_uniform_diff_background = 1
         let g:nord_uniform_status_lines = 1
-        set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
         colorscheme nord            " Load a colorscheme
     endif
 
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
-
     set cursorline                  " Highlight current line
-
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
     "highlight clear CursorLineNr    " Remove highlight color from current line number
@@ -182,7 +180,7 @@
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        if isdirectory(expand('~/.local/share/nvim/plugged/vim-fugitive/'))
+        if count(keys(g:plugs), 'vim-fugitive')
             set statusline+=%{fugitive#statusline()} " Git Hotness
         endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
