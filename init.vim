@@ -615,10 +615,11 @@
 
     function! s:EditSpf13Config()
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.config/nvim/init.vim")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/before.vim")
+        " call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/before.vim")
+        call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/bundles-config.vim")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/bundles.vim")
 
-        execute bufwinnr(".vimrc") . "wincmd w"
+        execute bufwinnr("init.vim") . "wincmd w"
         call <SID>ExpandFilenameAndExecute("split", "~/.config/nvim/local.vim")
         wincmd l
         call <SID>ExpandFilenameAndExecute("split", "~/.config/nvim/before.local.vim")
@@ -626,7 +627,7 @@
         call <SID>ExpandFilenameAndExecute("split", "~/.config/nvim/bundles.local.vim")
 
         if <SID>IsSpf13Fork()
-            execute bufwinnr(".vimrc") . "wincmd w"
+            execute bufwinnr("init.vim") . "wincmd w"
             call <SID>ExpandFilenameAndExecute("split", "~/.config/nvim/fork.vim")
             wincmd l
             call <SID>ExpandFilenameAndExecute("split", "~/.config/nvim/before.fork.vim")
@@ -642,8 +643,8 @@
 " }
 
 " Use plug vimrc if available {
-    if filereadable(expand("~/.config/nvim/plug.vim"))
-        source ~/.config/nvim/plug.vim
+    if filereadable(expand("~/.config/nvim/bundles-config.vim"))
+        source ~/.config/nvim/bundles-config.vim
     endif
 " }
 
