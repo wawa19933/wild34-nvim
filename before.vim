@@ -8,7 +8,8 @@ let g:spf13_bundle_groups = [
 \]
 
 " Leader keys
-let g:spf13_localleader='\<space>'
-let g:spf13_consolidated_directory = $HOME.'/.cache/vim'
+let g:spf13_leader = ' '
+let g:spf13_localleader=','
+let g:spf13_consolidated_directory = $HOME.'/.cache/vim/'
 
 let g:airline_powerline_fonts = 1

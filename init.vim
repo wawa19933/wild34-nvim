@@ -66,7 +66,6 @@
             set background=dark
         endif
     endfunction
-    noremap <leader>bg :call ToggleBG()<CR>
 
     " if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
@@ -305,6 +304,7 @@
         map <C-H> <C-W>h
     endif
 
+    noremap <leader>bg :call ToggleBG()<CR>
     " Visual mode pressing * or # searches for the current selection
     " Super useful! From an idea by Michael Naumann
     vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -405,11 +405,12 @@
     " and off, add the following to your .vimrc.before.local file:
     "   let g:spf13_clear_search_highlight = 1
     if exists('g:spf13_clear_search_highlight')
-        nmap <silent> <localleader>/ :nohlsearch<CR>
+        nmap <buffer><silent> <localleader>/ :nohlsearch<CR>
     else
-        nmap <silent> <localleader>/ :set invhlsearch<CR>
+        nmap <buffer><silent> <localleader>/ :set invhlsearch<CR>
     endif
 
+    nnoremap <buffer><silent> <LocalLeader>f :Buffers<CR>
 
     " Find merge conflict markers
     map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -614,7 +615,7 @@
     function! s:EditSpf13Config()
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.config/nvim/init.vim")
         " call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/before.vim")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/bundles-config.vim")
+        call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/config.vim")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/bundles.vim")
 
         execute bufwinnr("init.vim") . "wincmd w"
@@ -640,9 +641,9 @@
     execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.config/nvim/init.vim<CR>"
 " }
 
-" Use plug vimrc if available {
-    if filereadable(expand("~/.config/nvim/bundles-config.vim"))
-        source ~/.config/nvim/bundles-config.vim
+" Use plugins config if available {
+    if filereadable(expand("~/.config/nvim/config.vim"))
+        source ~/.config/nvim/config.vim
     endif
 " }
 

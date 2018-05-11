@@ -81,6 +81,11 @@
 
 " }
 
+" Use local bundles.vim if available {
+    if filereadable(expand("~/.config/nvim/bundles.local.vim"))
+        source ~/.config/nvim/bundles.local.vim
+    endif
+" }
 
 " Initialize plugin system {
 
