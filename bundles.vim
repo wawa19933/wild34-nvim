@@ -1,6 +1,5 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
-
-" Plugin manager configuration { 
+" Plugin manager configuration {
 
     " Automatically install missing plugins on startup
     autocmd VimEnter *
@@ -15,21 +14,21 @@
 
 " }
 
-
 " Plugins {
 
-    " General { 
+    " General {
         if count(g:spf13_bundle_groups, 'general')
             if !executable('fzf')
                 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
             endif
             Plug 'junegunn/fzf.vim'
-            Plug 'tpope/vim-fugitive'           " incredible Git integration
-            Plug 'Shougo/context_filetype.vim'
+            Plug 'Shougo/context_filetype.vim'  " find fenced code blocks and their filetype
             Plug 'Shougo/neoyank.vim'
             " UI enhancement
-            Plug 'arcticicestudio/nord-vim'     " default colorscheme
-            Plug 'vim-airline/vim-airline'      " nice statusline
+            Plug 'arcticicestudio/nord-vim'     " default color scheme
+            Plug 'vim-airline/vim-airline'      " nice status line
+            Plug 'tpope/vim-fugitive'           " incredible Git integration
+            Plug 'jreybert/vimagit'             " easy Git workflow integration
             Plug 'airblade/vim-gitgutter'       " git diff marks
             Plug 'mhinz/vim-startify'           " start page
             Plug 'junegunn/goyo.vim'            " distraction-free mode
@@ -50,7 +49,7 @@
         endif
     " }
 
-    " Themes { 
+    " Themes {
         if count(g:spf13_bundle_groups, 'themes')
             " Plug 'rafi/awesome-vim-colorschemes'
             Plug 'jacoborus/tender.vim'

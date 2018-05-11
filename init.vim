@@ -56,17 +56,6 @@
     endif
     set background=dark         " Assume a dark background
 
-    " Allow to trigger background
-    function! ToggleBG()
-        let s:tbg = &background
-        " Inversion
-        if s:tbg == "dark"
-            set background=light
-        else
-            set background=dark
-        endif
-    endfunction
-
     " if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     " endif
@@ -113,13 +102,6 @@
     " To disable this, add the following to your .vimrc.before.local file:
     "   let g:spf13_no_restore_cursor = 1
     if !exists('g:spf13_no_restore_cursor')
-        function! ResCur()
-            if line("'\"") <= line("$")
-                silent! normal! g`"
-                return 1
-            endif
-        endfunction
-
         augroup resCur
             autocmd!
             autocmd BufWinEnter * call ResCur()
@@ -321,19 +303,6 @@
     " .vimrc.before.local file:
     "   let g:spf13_no_wrapRelMotion = 1
     if !exists('g:spf13_no_wrapRelMotion')
-        " Same for 0, home, end, etc
-        function! WrapRelativeMotion(key, ...)
-            let vis_sel=""
-            if a:0
-                let vis_sel="gv"
-            endif
-            if &wrap
-                execute "normal!" vis_sel . "g" . a:key
-            else
-                execute "normal!" vis_sel . a:key
-            endif
-        endfunction
-
         " Map g* keys in Normal, Operator-pending, and Visual+select
         noremap $ :call WrapRelativeMotion("$")<CR>
         noremap <End> :call WrapRelativeMotion("$")<CR>
@@ -381,12 +350,30 @@
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
-
     " Close the current buffer
     map <leader>bd :Bclose<cr>:tabclose<cr>gT
     " Close all the buffers
     map <leader>ba :bufdo bd<cr>
     map <leader>ss :setlocal spell!<cr>
+
+    " Save ('Ctrl + s') and save all ('Ctrl + S') key bindings.
+    " To disable this bindings add to 'before.local.vim':
+    "   let g:wild34_no_ctrl_s = 1
+    if !exists('g:wild34_no_ctrl_s')
+        nnoremap <C-s> :w!<CR>
+        nnoremap <C-S-s> :wa!<CR>
+    endif
+
+    " Copy selected to system clipboard ('Ctrl + c') and paste from system
+    " clipboard in visual mode with 'Ctrl + v'. To disable add to
+    " 'before.local.vim':
+    "   let g:wild34_no_ctrl_c = 1
+    if !exists('g:wild34_no_ctrl_c')
+        vnoremap <C-c> "+y
+        vnoremap <C-v> "+p
+    endif
+
+    inoremap jk <Esc>
 
     " Code folding options
     nmap <leader>f0 :set foldlevel=0<CR>
@@ -484,6 +471,13 @@
 
 " Functions {
 
+        function! ResCur()
+            if line("'\"") <= line("$")
+                silent! normal! g`"
+                return 1
+            endif
+        endfunction
+
     function! VisualSelection(direction, extra_filter) range
         let l:saved_reg = @"
         execute "normal! vgvy"
@@ -543,6 +537,30 @@
     endfunction
     call InitializeDirectories()
     " }
+
+    " Allow to trigger background
+    function! ToggleBG()
+        let s:tbg = &background
+        " Inversion
+        if s:tbg == "dark"
+            set background=light
+        else
+            set background=dark
+        endif
+    endfunction
+
+    " Same for 0, home, end, etc
+    function! WrapRelativeMotion(key, ...)
+        let vis_sel=""
+        if a:0
+            let vis_sel="gv"
+        endif
+        if &wrap
+            execute "normal!" vis_sel . "g" . a:key
+        else
+            execute "normal!" vis_sel . a:key
+        endif
+    endfunction
 
     " Initialize NERDTree as needed {
     function! NERDTreeInitAsNeeded()
@@ -614,9 +632,9 @@
 
     function! s:EditSpf13Config()
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.config/nvim/init.vim")
-        " call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/before.vim")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/config.vim")
+        call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/before.vim")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/bundles.vim")
+        call <SID>ExpandFilenameAndExecute("vsplit", "~/.config/nvim/bundles.config.vim")
 
         execute bufwinnr("init.vim") . "wincmd w"
         call <SID>ExpandFilenameAndExecute("split", "~/.config/nvim/local.vim")
@@ -642,8 +660,8 @@
 " }
 
 " Use plugins config if available {
-    if filereadable(expand("~/.config/nvim/config.vim"))
-        source ~/.config/nvim/config.vim
+    if filereadable(expand("~/.config/nvim/bundles.config.vim"))
+        source ~/.config/nvim/bundles.config.vim
     endif
 " }
 

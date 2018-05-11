@@ -12,4 +12,7 @@ let g:spf13_leader = ' '
 let g:spf13_localleader=','
 let g:spf13_consolidated_directory = $HOME.'/.cache/vim/'
 
+let g:wild34_easyWindows = 1
+let g:wild34_no_clipboard = 1
+
 let g:airline_powerline_fonts = 1
