@@ -397,7 +397,7 @@
         nmap <buffer><silent> <localleader>/ :set invhlsearch<CR>
     endif
 
-    nnoremap <buffer><silent> <LocalLeader>f :Buffers<CR>
+    nmap <F5> :call ReloadBuffer()<CR>
 
     " Find merge conflict markers
     map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -471,12 +471,18 @@
 
 " Functions {
 
-        function! ResCur()
-            if line("'\"") <= line("$")
-                silent! normal! g`"
-                return 1
-            endif
-        endfunction
+    function! ReloadBuffer()
+        set noconfirm
+        bufdo e!
+        set confirm
+    endfunction
+
+    function! ResCur()
+        if line("'\"") <= line("$")
+            silent! normal! g`"
+            return 1
+        endif
+    endfunction
 
     function! VisualSelection(direction, extra_filter) range
         let l:saved_reg = @"

@@ -3,6 +3,11 @@
 let g:neoyank#file = $HOME.'/.cache/vim/neoyank.hist'
 let g:neoyank#save_registers = ['"', '+', '*', 'a', 'b', 'c', 'd']
 
+let g:lastplace_open_folds = 1
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+
+
 " Airline {
     let g:airline#extensions#tabline#enabled = 1
 
@@ -25,5 +30,6 @@ let g:neoyank#save_registers = ['"', '+', '*', 'a', 'b', 'c', 'd']
     vnoremap <leader>y :FZFNeoyankSelection<cr>
 
     nnoremap <Leader>: :Commands<CR>
+    nnoremap <Leader>b :Buffers<CR>
 
 " }

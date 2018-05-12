@@ -2,14 +2,19 @@
 
 let g:spf13_bundle_groups = [
 \   'general',
+\   'linter',
+\   'syntax',
 \   'syntax',
 \   'themes',
 \   'misc',
+\   'programming',
+\   'writing',
 \]
 
 " Leader keys
 let g:spf13_leader = ' '
 let g:spf13_localleader=','
+let g:spf13_no_restore_cursor = 1
 let g:spf13_consolidated_directory = $HOME.'/.cache/vim/'
 
 let g:wild34_easyWindows = 1

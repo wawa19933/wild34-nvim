@@ -14,9 +14,25 @@ The distribution is completely customisable using a `~/.config/nvim/local.vim`, 
 
 # Key bindings
 
-### Fzf
-```
-<leader>y :FZFNeoyank<cr>           " Open yank history for register `"` and paste after the cursor
-<leader>Y :FZFNeoyank " P<cr>       " Open yank history but paste before the cursor
-<leader>y :FZFNeoyankSelection<cr>  " In visual mode replace selection from yank history
-```
+#### Normal mode:
+--------------------------------------------------------
+| **Ctrl + {H,J,K,L}**    | move across windows
+| **Shift + {H,L}**       | prev, next tab
+|                         |
+| **<Leader>bg**          | switch background dark/light
+| **<Leader>bd**          | delete buffer and close tab
+| **<Leader>ba**          | close all other buffers
+| **<Leader>ss**          | toggle spell
+| **<Leader>f[0-9]**      | set fold level
+| **<Leader>fc **         | find Git conflict markers
+| Fzf:                    |
+| **<Leader>y **          | open yank history for unnamed register `"` and paste after the cursor
+| **<Leader>Y **          | open yank history but paste before the cursor using Fzf
+| **<Leader>b **          | open buffer list with Fzf
+| **<Leader>: **          | Fzf all vim commands (not history)
+|                         |
+| **<LocalLeader>/ **     | toggle search highlight
+------------------------------------------------------------
+
+#### Visual mode:
+**<Leader>y**           | replace selection from yank history using Fzf

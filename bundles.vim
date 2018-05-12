@@ -23,7 +23,8 @@
             endif
             Plug 'junegunn/fzf.vim'
             Plug 'Shougo/context_filetype.vim'  " find fenced code blocks and their filetype
-            Plug 'Shougo/neoyank.vim'
+            Plug 'Shougo/neoyank.vim'           " yank history support
+            Plug 'farmergreg/vim-lastplace'     " restore cursor position
             " UI enhancement
             Plug 'arcticicestudio/nord-vim'     " default color scheme
             Plug 'vim-airline/vim-airline'      " nice status line
@@ -37,9 +38,22 @@
         endif
     " }
 
+    " Linter {
+        if count(g:spf13_bundle_groups, 'linter')
+            Plug 'w0rp/ale'
+            " Plug 'neomake/neomake'
+        endif
+    " }
+
+    " Auto-complition & Snippets {
+        if count(g:spf13_bundle_groups, 'deoplete')
+            Plug 'Shougo/deoplete.nvim'
+        endif
+    " }
+
     " Syntax plugins {
         if count(g:spf13_bundle_groups, 'syntax')
-            Plug 'sheerun/vim-polyglot'
+            Plug 'sheerun/vim-polyglot'         " a set of different syntax for vim
             Plug 'pboettch/vim-cmake-syntax'
             Plug 'plasticboy/vim-markdown'
             Plug 'NLKNguyen/c-syntax.vim'
@@ -65,6 +79,7 @@
 
     " Misc {
         if count(g:spf13_bundle_groups, 'misc')
+            Plug 'junegunn/gv.vim'              " Git commit browser (log viewer)
             Plug 'burnettk/vim-jenkins'
             Plug 'andrewradev/splitjoin.vim'
             Plug 'dbakker/vim-projectroot'
@@ -75,6 +90,28 @@
             Plug 'dominickng/fzf-session.vim'
             Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
             Plug 'justinhoward/fzf-neoyank'
+        endif
+    " }
+
+    " Programming {
+        if count(g:spf13_bundle_groups, 'programming')
+            Plug 'ludovicchabant/vim-gutentags'
+        endif
+    " }
+
+    " Tex {
+        if count(g:spf13_bundle_groups, 'writing')
+            Plug 'lervag/vimtex'
+        endif
+    " }
+
+    " Rust {
+        if count(g:spf13_bundle_groups, 'rust')
+            Plug 'rust-lang/rust.vim'
+            Plug 'sebastianmarkow/deoplete-rust'
+            if count(g:spf13_bundle_groups, 'lsp')
+                Plug 'racer-rust/vim-racer'
+            endif
         endif
     " }
 
