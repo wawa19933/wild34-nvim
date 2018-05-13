@@ -2,14 +2,18 @@
 
 let g:spf13_bundle_groups = [
 \   'general',
-\   'linter',
-\   'syntax',
 \   'syntax',
 \   'themes',
+\   'deoplete',
+\   'lsp',
+\   'linter',
 \   'misc',
 \   'programming',
 \   'writing',
+\   'rust',
 \]
+" \   'lsp',
+" \   'linter',
 
 " Leader keys
 let g:spf13_leader = ' '

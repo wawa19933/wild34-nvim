@@ -25,6 +25,7 @@
             Plug 'Shougo/context_filetype.vim'  " find fenced code blocks and their filetype
             Plug 'Shougo/neoyank.vim'           " yank history support
             Plug 'farmergreg/vim-lastplace'     " restore cursor position
+            Plug 'milkypostman/vim-togglelist'  " commands to toggle QuickFix or Location lists
             " UI enhancement
             Plug 'arcticicestudio/nord-vim'     " default color scheme
             Plug 'vim-airline/vim-airline'      " nice status line
@@ -47,7 +48,11 @@
 
     " Auto-complition & Snippets {
         if count(g:spf13_bundle_groups, 'deoplete')
-            Plug 'Shougo/deoplete.nvim'
+            Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+            " neosnippet: "neosnippet" source
+            Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets'
+            " UltiSnips source: "ultisnips" source for UltiSnips
+            Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         endif
     " }
 
@@ -59,7 +64,7 @@
             Plug 'NLKNguyen/c-syntax.vim'
             Plug 'elzr/vim-json'
             Plug 'neovimhaskell/haskell-vim'
-            Plug 'docker/docker', {'rtp': '/contrib/syntax/vim/'}
+            Plug 'docker/docker', {'rtp': 'contrib/syntax/vim/', 'frozen': 1}
         endif
     " }
 
@@ -95,7 +100,15 @@
 
     " Programming {
         if count(g:spf13_bundle_groups, 'programming')
-            Plug 'ludovicchabant/vim-gutentags'
+            Plug 'ludovicchabant/vim-gutentags' " automatic tags generation
+            Plug 'metakirby5/codi.vim', {'on': 'Codi'} " interactive scratchpad with Python support
+            Plug 'majutsushi/tagbar'            " panel to display tags
+            Plug 'tpope/vim-commentary'         " comment toggle
+            Plug 'devjoe/vim-codequery'         " code navigation on tags
+            Plug 'vhdirk/vim-cmake'             " CMake commands to configure project
+            Plug 'jansenm/vim-cmake', {'as': 'cmake.vim'} " CMake reference and completion
+            Plug 'richq/vim-cmake-completion'   " CMake omni-completion
+            " Plug 'vim-scripts/cmake.vim'        " indentation support (12 y.o.)
         endif
     " }
 
@@ -107,11 +120,18 @@
 
     " Rust {
         if count(g:spf13_bundle_groups, 'rust')
-            Plug 'rust-lang/rust.vim'
-            Plug 'sebastianmarkow/deoplete-rust'
-            if count(g:spf13_bundle_groups, 'lsp')
+            Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+            Plug 'sebastianmarkow/deoplete-rust', { 'for': 'rust' }
+            Plug 'timonv/vim-cargo'
+            if !count(g:spf13_bundle_groups, 'lsp')
                 Plug 'racer-rust/vim-racer'
             endif
+        endif
+    " }
+
+    " LanguageClient (LSP) {
+        if count(g:spf13_bundle_groups, 'lsp')
+            Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
         endif
     " }
 
