@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
 if has_key(g:plugs, 'neoyank')
   let g:neoyank#file = g:spf13_consolidated_directory . '/neoyank.hist'
@@ -83,7 +83,25 @@ endif
 
 " GitGutter {
 if has_key(g:plugs, 'vim-gitgutter')
-    let g:gitgutter_override_sign_column_highlight = 0
+  let g:gitgutter_override_sign_column_highlight = 0
+  " let g:gitgutter_sign_added = 'xx'
+  " let g:gitgutter_sign_modified = 'yy'
+  " let g:gitgutter_sign_removed = 'zz'
+  " let g:gitgutter_sign_removed_first_line = '^^'
+  " let g:gitgutter_sign_modified_removed = 'ww'
+endif
+
+" Twiggly {
+if has_key(g:plugs, 'vim-twiggly')
+  " let g:twiggy_group_locals_by_slash = 0
+  let g:twiggy_local_branch_sort = 'mru'
+  let g:twiggy_remote_branch_sort = 'date'
+endif
+
+" Chosewin {
+if has_key(g:plugs, 'vim-choosewin')
+  map - <Plug>(choosewin)
+  let g:choosewin_overlay_enable = 1
 endif
 
 " Fzf {

@@ -31,9 +31,8 @@
         Plug 'arcticicestudio/nord-vim'     " default color scheme
         " Plug 'ryanoasis/vim-devicons'       " filetype icons for NERDTree
         Plug 'junegunn/fzf.vim'
-        Plug 'saltstack/salt-vim'           " SaltStack syntax support
-        Plug 'airblade/vim-gitgutter'       " git diff marks
-        Plug 'chase/vim-ansible-yaml'       " Ansible syntax support
+        Plug 't9md/vim-choosewin'           " interactive window switcher
+        Plug 'weilbith/nerdtree_choosewin-plugin'
     endif
 
     " Essential {
@@ -44,7 +43,7 @@
     endif
     " }
 
-    " General {
+   " General {
         if count(g:spf13_bundle_groups, 'general')
             if !executable('fzf')
                 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -66,15 +65,16 @@
 
     " UI {
     if count(g:spf13_bundle_groups, 'ui')
-        Plug 'arcticicestudio/nord-vim'     " default color scheme
-        Plug 'jreybert/vimagit'             " easy Git workflow integration
         Plug 'mhinz/vim-startify'           " start page
+        Plug 'airblade/vim-gitgutter'       " git diff marks
         Plug 'junegunn/goyo.vim'            " distraction-free mode
         Plug 'junegunn/limelight.vim'       " paragraph highlighting for better focus
         Plug 'amix/vim-zenroom2'            " enhancement to Goyo
         Plug 'junegunn/vim-peekaboo'        " registers preview on copy/paste
+        Plug 'arcticicestudio/nord-vim'     " default color scheme
     endif
     " }
+
     " Extended motion {
     if count(g:spf13_bundle_groups, 'motion')
         Plug 'haya14busa/incsearch.vim'     " Incremental search
@@ -119,6 +119,8 @@
             Plug 'NLKNguyen/c-syntax.vim'
             Plug 'elzr/vim-json'
             Plug 'neovimhaskell/haskell-vim'
+            Plug 'saltstack/salt-vim'           " SaltStack syntax support
+            Plug 'chase/vim-ansible-yaml'       " Ansible syntax support
             " Plug 'docker/docker', {'rtp': 'contrib/syntax/vim/', 'frozen': 1}
         endif
     " }
@@ -165,6 +167,9 @@
             " Plug 'jansenm/vim-cmake', {'as': 'cmake.vim'} " CMake reference and completion
             " Plug 'richq/vim-cmake-completion'   " CMake omni-completion
             " Plug 'vim-scripts/cmake.vim'        " indentation support (12 y.o.)
+            Plug 'junegunn/gv.vim', {'on', ":GV"}              " git commit browser
+            Plug 'sodapopcan/vim-twiggy'        " git branch browser
+            Plug 'jreybert/vimagit', {'on': ':Magit'} " easy Git workflow integration
         endif
     " }
 

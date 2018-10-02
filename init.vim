@@ -20,9 +20,7 @@ let g:config_root = fnamemodify(resolve($MYVIMRC), ":p:h")
 
         set nocompatible        " Must be first line
         if !WINDOWS()
-            if executable('fish')
-                set shell=/usr/bin/fish
-            elseif executable('bash')
+            if executable('bash')
                 set shell=/bin/bash
             else
                 set shell=/bin/sh
