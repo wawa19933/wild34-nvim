@@ -17,15 +17,33 @@ endif
 
 " YouCompleteMe {
 if has_key(g:plugs, 'youcompleteme') || filereadable(expand("/usr/share/vim/vimfiles/autoload/youcompleteme.vim"))
-  let g:ycm_server_python_interpreter = '/usr/bin/python2'
+  " let g:ycm_server_python_interpreter = '/usr/bin/python3'
   let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 endif
 " }
 
 " Airline {
 if has_key(g:plugs, 'vim-airline')
-  let g:airline#extensions#tabline#enabled = 1
+  " let g:airline#extensions#tabline#enabled = 1
 endif
+" }
+
+" XTabline {
+  if has_key(g:plugs, 'vim-xtabline')
+    let g:xtabline_settings = {}
+    let g:xtabline_settings.sessions_path = g:spf13_consolidated_directory . "session"
+    let g:xtabline_settings.bookmarks_file = g:spf13_consolidated_directory . "bookmarks.xtabline"
+    let g:xtabline_settings.sessions_data = g:spf13_consolidated_directory . "sessions.xtabline"
+    " let g:xtabline_settings.extra_icons = 1
+    " let g:xtabline_settings.superscript_unicode_nrs = 1
+    " let g:xtabline_settings.sort_buffers_by_last_open = 1
+    let g:xtabline_settings.bufline_indicators = {
+        \ 'modified': '[+]',
+        \ 'readonly': '[🔒]',
+        \ 'scratch': '[!]',
+        \ 'pinned': '[📌]',
+        \}
+  endif
 " }
 
 " comfortable-motion {
